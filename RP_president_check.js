@@ -1,0 +1,6 @@
+alert("Check if you become a RP president!")
+var age = prompt("Write your age:")
+if( age >= 35) alert("You can become a RP president")
+else if ((age < 35) && (age >= 18)) alert("You can't become RP president but you can vote")
+else if ((age < 18) && (age > 0)) alert("You can't become RP president and you can't vote")
+else if(age <= 0) alert("incorrect age!")
