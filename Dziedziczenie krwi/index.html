@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dziedziczenie krwi</title>
+    <script src="https://kit.fontawesome.com/c22f07ca69.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .container-fluid {
+        background-color: rgb(172, 68, 68);
+        display: flex;
+        vertical-align: middle;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .program {
+        background-color: white;
+        height: 70vh;
+        width: 60vw;
+        -webkit-box-shadow: 22px 20px 16px 8px rgba(0,0,0,0.75);
+-moz-box-shadow: 22px 20px 16px 8px rgba(0,0,0,0.75);
+box-shadow: 22px 20px 16px 8px rgba(0,0,0,0.75);
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h3 {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .form {
+        background-color: red;
+        height: 40vh;
+        padding: 0;
+
+    }
+
+    .rodz2 {
+        height: 35vh;
+        text-align: center;
+        background-color: pink;
+    }
+   
+
+    .rodz1 {
+        height: 35vh;
+        text-align: center;
+        background-color: rgb(16, 169, 235);
+    }
+
+    .grupa {
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+    }
+    .btn
+    {
+        height: 5vh;
+    }
+   .wynik
+   {
+       background-color: yellow;
+       height: 22vh;
+   }
+   .wynikgrupy
+   {
+       font-size: 30px;
+   }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="program">
+            <h3 class="h1 display-4 text-center">Dziedziczenie krwi po rodzicach</h3>
+            <div class="form container">
+                <form>
+                    <div class="rodz1  w-50 d-inline-block">
+                        <i class="fas fa-male font-weight-bold display-3 h1"></i>
+                        <h2 class="d-inline-block  font-weight-bold display-3 h1">Rodzic 1: </h2>
+                        <br>
+                        <p class="d-inline h3">Grupa krwi:</p>
+                        <select class="grupa" id="group1">
+
+                            <option>0</option>
+                            <option>A</option>
+                            <option>B</option>
+                            <option>AB</option>
+
+
+                        </select>
+                        <br>
+                        <p class="d-inline h3">RH:</p>
+                        <select id="rh1">
+
+                            <option>DD(Rh+)</option>
+                            <option>Dd(Rh+)</option>
+                            <option>dd(Rh-)</option>
+
+
+
+                        </select>
+                    </div>
+                    <div class="rodz2  w-50  float-right">
+                        <i class="fas fa-female font-weight-bold display-3 h1"></i>
+                        <h2 class="d-inline-block font-weight-bold display-3 h1">Rodzic 2: </h2><br>
+                        <p class="d-inline h3">Grupa krwi:</p>
+                        <select class="grupa" id="group2">
+
+                            <option>0</option>
+                            <option>A</option>
+                            <option>B</option>
+                            <option>AB</option>
+
+                        </select>
+                        <br>
+                        <p class="d-inline h3">RH:</p>
+                        <select id="rh2">
+
+                            <option>DD(Rh+)</option>
+                            <option>Dd(Rh+)</option>
+                            <option>dd(Rh-)</option>
+
+
+
+                        </select>
+                        
+                    </div>
+                    <input type="button" class="btn btn-danger container" id="guzik" value="Sprawdz!">
+                </form>
+            </div>
+            <div id="wynikgrupy" style="font-size: 40px; text-align: center; color: red;">
+                
+            </div>
+            <div id="wynikrh" style="font-size: 40px; text-align: center; color: red;">
+                
+            </div>
+        </div>
+        
+    </div>
+    <script>
+        
+  var guzik = document.getElementById("guzik");
+  guzik.addEventListener("click", function()
+  {
+    var pierwszakrew = document.getElementById("group1").value;
+    var drugakrew = document.getElementById("group2").value;
+    var firstkrewrh = document.getElementById("rh1").value;
+    var secondkrewrh = document.getElementById("rh2").value;
+    
+    if((pierwszakrew == 0 && drugakrew == 0))
+    {
+     document.getElementById("wynikgrupy").innerHTML = "Grupa krwi dziecka to: 0"; 
+    }
+    else if(  (pierwszakrew == "A"|| drugakrew == "A") && (pierwszakrew == 0 || drugakrew == 0) )
+    {
+        document.getElementById("wynikgrupy").innerHTML = "Grupa krwi dziecka to: 0 lub A"; 
+    }
+    else if(  (pierwszakrew == "B"|| drugakrew == "B") && (pierwszakrew == 0 || drugakrew == 0) )
+    {
+        document.getElementById("wynikgrupy").innerHTML = "Grupa krwi dziecka to: 0 lub B"; 
+    }
+    else if(  (pierwszakrew == "AB"|| drugakrew == "AB") && (pierwszakrew == 0 || drugakrew == 0) )
+    {
+        document.getElementById("wynikgrupy").innerHTML = "Grupa krwi dziecka to: A lub B"; 
+    }
+    else if((pierwszakrew == "A" && drugakrew == "A"))
+    {
+        document.getElementById("wynikgrupy").innerHTML = "Grupa krwi dziecka to: A lub 0"; 
+    }
+    else if(  (pierwszakrew == "A"|| drugakrew == "A") && (pierwszakrew == "B" || drugakrew == "B") )
+    {
+        document.getElementById("wynikgrupy").innerHTML = "Grupa krwi dziecka to: A, B, 0 lub AB"; 
+    }
+    else if(  (pierwszakrew == "A"|| drugakrew == "A") && (pierwszakrew == "AB" || drugakrew == "AB") )
+    {
+        document.getElementById("wynikgrupy").innerHTML = "Grupa krwi dziecka to: A, B lub AB"; 
+    }
+    else if((pierwszakrew == "B" && drugakrew == "B"))
+    {
+        document.getElementById("wynikgrupy").innerHTML = "Grupa krwi dziecka to: B lub 0"; 
+    }
+    else if(  (pierwszakrew == "B"|| drugakrew == "B") && (pierwszakrew == "AB" || drugakrew == "AB") )
+    {
+        document.getElementById("wynikgrupy").innerHTML = "Grupa krwi dziecka to: A, B lub AB"; 
+    }
+    else if((pierwszakrew == "AB" && drugakrew == "AB"))
+    {
+        document.getElementById("wynikgrupy").innerHTML = "Grupa krwi dziecka to: A, B lub AB"; 
+    }
+
+    if((firstkrewrh == "DD(Rh+)" && secondkrewrh == "DD(Rh+)"))
+    {
+     document.getElementById("wynikrh").innerHTML = "Czynnik: DD(RH+)"; 
+    }
+    else if(  (firstkrewrh == "DD(Rh+)"|| secondkrewrh == "DD(Rh+)") && (firstkrewrh == "Dd(Rh+)" || secondkrewrh == "Dd(Rh+)") )
+    {
+        document.getElementById("wynikrh").innerHTML = "Czynnik: DD(Rh+) lub Dd(Rh+)"; 
+    }
+    else if(  (firstkrewrh == "DD(Rh+)"|| secondkrewrh == "DD(Rh+)") && (firstkrewrh == "dd(Rh-)" || secondkrewrh == "dd(Rh-)") )
+    {
+        document.getElementById("wynikrh").innerHTML = "Czynnik: Dd(Rh+)"; 
+    }
+    else if((firstkrewrh == "Dd(Rh+)" && secondkrewrh == "Dd(Rh+)"))
+    {
+        document.getElementById("wynikrh").innerHTML = "Czynnik: DD lub Dd(Rh+) lub dd(Rh-)"; 
+    }
+    else if((firstkrewrh == "dd(Rh-)" && secondkrewrh == "dd(Rh-)"))
+    {
+        document.getElementById("wynikrh").innerHTML = "Czynnik: dd(Rh-)"; 
+    }
+    else if(  (firstkrewrh == "Dd(Rh+)"|| secondkrewrh == "Dd(Rh+)") && (firstkrewrh == "dd(Rh-)" || secondkrewrh == "dd(Rh-)") )
+    {
+        document.getElementById("wynikrh").innerHTML = "Czynnik: Dd(Rh+) lub dd(Rh-)"; 
+    }
+  });
+
+    </script>
+    
+</body>
+
+</html>
